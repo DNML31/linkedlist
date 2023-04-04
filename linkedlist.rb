@@ -72,29 +72,20 @@ class LinkedList
     end
   end
 
-  # def pop
-  #   if @head.nil?
-  #     return
-  #   end
-
-  #   last = @head
-  #   while !last.next_node.nil?
-  #     last = last.next_node
-  #   end
-
-  #   last.next_node = nil
-  # end
-
   def pop
     if @head.nil?
       return
     end
 
-    while !@head.next_node.nil?
-      @head = @head.next_node
-    end
-    @head.value = nil
+    current = @head
+    current_next = @head.next_node
 
+    loop do
+      current = current_next
+      break if current_next.next_node == nil
+    end
+
+    current = nil
   end
 
   def contains?(value)
@@ -151,5 +142,5 @@ list.append(2)
 list.append(3)
 list.append(7)
 
-list.pop
+puts list.pop
 puts list.size
