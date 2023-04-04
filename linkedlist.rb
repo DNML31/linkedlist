@@ -119,7 +119,15 @@ class LinkedList
   end
 
   def to_s
+    while @head != nil
+      print "( #{@head.value} ) -> "
+      @head = @head.next_node
+    end
 
+    if @head == nil
+      print " nil "
+    end
+    
   end
 
 
@@ -137,10 +145,10 @@ end
 
 list = LinkedList.new
 
-list.append(1)
-list.append(2)
-list.append(3)
-list.append(7)
+list.append('node one')
+list.append('node two')
+list.append('iii')
+list.append([1,2,4])
+list.append(342)
 
-puts list.pop
-puts list.size
+list.to_s
